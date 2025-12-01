@@ -1,0 +1,390 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+  padding-top: 3.25rem; /* 为固定导航栏留出空间 */
+}
+
+/* 导航栏样式 */
+.navbar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e8e8e8;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.navbar.is-fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar-item {
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.navbar-item:hover {
+  color: #3273dc;
+  background-color: transparent;
+}
+
+.navbar-brand .navbar-item {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* 移动端导航栏样式 */
+.navbar-burger {
+  height: auto;
+}
+
+.navbar-menu.is-active {
+  display: block;
+}
+
+@media screen and (max-width: 1023px) {
+  .navbar-menu {
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+
+.footer .icon-link {
+    font-size: 25px;
+    color: #000;
+}
+
+.link-block a {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.link-block a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: #3273dc;
+}
+
+.link-block a:active {
+    transform: translateY(0);
+}
+
+
+/* 禁用按钮样式 */
+.link-block a[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.link-block a[disabled]:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+
+.publication-title {
+}
+
+.publication-banner {
+  max-height: parent;
+
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {
+}
+
+.publication-title {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.revseg-styled {
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.1em;
+    letter-spacing: 0.5px;
+}
+
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+    color: #555;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.publication-awards {
+    color: #ff3860;
+    width: fit-content;
+    font-weight: bolder;
+}
+
+
+.publication-authors a {
+   color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-banner img {
+}
+
+
+.publication-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+
+    overflow: hidden;
+    border-radius: 10px !important;
+}
+
+.publication-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.publication-body img {
+}
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+
+.interpolation-panel {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.interpolation-panel .interpolation-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.interpolation-video-column {
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+#interpolation-image-wrapper {
+  width: 100%;
+}
+#interpolation-image-wrapper img {
+  border-radius: 5px;
+}
+
+/* 缩小hero section和下一个section之间的间距 */
+.hero + .section {
+  margin-top: 1rem !important;
+  padding-top: 0 !important;
+}
+
+/* 学术表格样式优化 */
+.table.is-academic {
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 15px; 
+  width: auto; /* 不占满全宽 */
+  margin: 0 auto; /* 居中显示 */
+}
+
+.table.is-academic th {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  font-weight: 700; /* 加粗表头 */
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16px; /* 表头字号更大 */
+}
+
+.table.is-academic td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* 第二列（会议年份）特殊样式 */
+.table.is-academic td:nth-child(2) {
+  font-size: 13px; /* 更小的字号 */
+  color: #888; /* 更浅的颜色 */
+  padding: 8px 6px; /* 更窄的列宽 */
+  max-width: 80px; /* 限制最大宽度 */
+}
+
+.table.is-academic thead th {
+  border-bottom: 2px solid #333;
+}
+
+.table.is-academic tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.table.is-academic tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+/* 突出显示我们的方法 */
+.table.is-academic tr.has-background-light {
+  background-color: #e7f3ff !important;
+  border-left: 3px solid #007bff;
+}
+
+.table.is-academic tr.has-background-light td {
+  font-weight: 600;
+  color: #0056b3;
+}
+
+/* 数学公式样式 */
+.table-math {
+  font-family: "Times New Roman", serif;
+  font-style: italic;
+}
+
+/* 会议标签样式 */
+.conference-tag {
+  font-size: 0.8em; /* 更小的字号 */
+  color: #888; /* 更浅的颜色 */
+  font-style: italic;
+}
+
+/* 表格容器优化 */
+.table-container {
+  margin: 2rem 0;
+  overflow-x: auto;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  background: white;
+  display: block; /* 改为block以支持水平滚动 */
+  max-width: 95%; /* 增加最大宽度以容纳12列的宽表格 */
+  width: fit-content; /* 根据内容自适应宽度 */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 表格标题样式 */
+.table-caption {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+  font-size: 0.9em;
+}
+
+/* 训练曲线图片网格样式 */
+.training-curves-grid {
+  margin: 2rem 0;
+}
+
+.training-figure {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #f8f9fa;
+  transition: transform 0.2s ease;
+}
+
+.training-figure:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.training-image {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.training-caption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #555;
+  font-style: italic;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .training-curves-grid .columns {
+    margin: 0;
+  }
+  
+  .training-curves-grid .column {
+    padding: 0.5rem;
+  }
+  
+  .training-figure {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .training-caption {
+    font-size: 0.85rem;
+  }
+}

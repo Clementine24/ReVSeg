@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="ReVSeg: Incentivizing the Reasoning Chain for Video Segmentation with Reinforcement Learning.">
+  <meta name="keywords" content="Video Object Segmentation, Reinforcement Learning, Vision Language Model">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReVSeg: Incentivizing the Reasoning Chain for Video Segmentation with Reinforcement Learning</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<!--   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+<!--   <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <!-- MathJax for LaTeX formula rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+    };
+    </script>
+</head>
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item has-text-weight-bold" href="#">
+        <span class="revseg-styled">ReVSeg</span>
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    
+    <div id="navbarMenu" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#abstract">Abstract</a>
+        <a class="navbar-item" href="#method">Method</a>
+        <a class="navbar-item" href="#experiments">Experiments</a>
+        <a class="navbar-item" href="#bibtex">BibTeX</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><span class="revseg-styled">ReVSeg </span>:<br> Incentivizing the Reasoning Chain for Video Segmentation with Reinforcement Learning</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+                Yifan Li<sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+                Yingda Yin<sup>3</sup>,
+            </span>
+            <span class="author-block">
+                Lingting Zhu<sup>3</sup>,
+            </span>
+            <span class="author-block">
+                Weikai Chen<sup>3</sup>,
+            </span>
+            <span class="author-block">
+                Shengju Qian<sup>3</sup>,
+            </span>
+            <span class="author-block">
+                Xin Wang<sup>3</sup>
+            </span>
+            <span class="author-block">
+                Yanwei Fu<sup>1,2</sup>
+            </span>
+        </div>
+
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Fudan University,</span>
+            <span class="author-block"><sup>2</sup>Shanghai Innovation Institute,</span>
+            <span class="author-block"><sup>3</sup>Tencent</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <!-- <a href="https://arxiv.org/pdf/2407.17827"
+                   class="external-link button is-normal is-rounded is-dark"> -->
+                   <a 
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://recorder-v3.slideslive.com/?share=93878&s=b86b9eb5-1162-4255-9a38-3b852a41a91a"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"> -->
+<!--                       <i class="fa fa-circle-play"></i> -->
+                   <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path fill="white" d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c7.6-4.2 16.8-4.1 24.3 .5l144 88c7.1 4.4 11.5 12.1 11.5 20.5s-4.4 16.1-11.5 20.5l-144 88c-7.4 4.5-16.7 4.7-24.3 .5s-12.3-12.2-12.3-20.9l0-176c0-8.7 4.7-16.7 12.3-20.9z"/>
+                    </svg>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/Clementine24/LexVLA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span> -->
+              <!-- A Fake Code Link. -->
+              <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark" disabled>
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code released soon</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+<!--               <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <center><img src="./static/images/teaser.png" width="120%"/></center>
+        <p class="has-text-centered">
+            <i>(Left)</i> Through an explicit reasoning chain, our <span class="revseg-styled">ReVSeg </span> tackles reasoning-focused video object segmentation and accurately grounds objects referenced by complex, abstract real-world queries. 
+            <br><i>(Right)</i> While the base model and its RL variant struggle on the task, our method achieves strong performance, with RL post-training yielding a further substantial boost. We report the $\mathcal{J}\&\mathcal{F}$ metric on Ref-DAVIS17 (in-domain) and ReasonVOS (out-of-domain) datasets in the chart.
+        </p>
+    </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered" id="abstract">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Reasoning-centric video object segmentation is an inherently complex task: the query often refers to dynamics, causality, and temporal interactions, rather than static appearances. Yet existing solutions generally collapse these factors into simplified reasoning with latent embeddings, rendering the reasoning chain opaque and essentially intractable.
+            We therefore adopt an explicit decomposition perspective and introduce <span class="revseg-styled">ReVSeg</span>, which executes reasoning as sequential decisions in the native interface of pretrained vision language models (VLMs). 
+            Rather than folding all reasoning into a single-step prediction, <span class="revseg-styled">ReVSeg</span> executes three explicit operations -- semantics interpretation, temporal evidence selection, and spatial grounding -- aligning pretrained capabilities.
+            We further employ reinforcement learning to optimize the multi-step reasoning chain, enabling the model to self-refine its decision quality from outcome-driven signals. 
+            Experimental results demonstrate that <span class="revseg-styled">ReVSeg</span> attains state-of-the-art performances on standard video object segmentation benchmarks and yields interpretable reasoning trajectories.
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered" id="method">Method</h2>
+    <center><img src="./static/images/framework.png" width="100%"/></center>
+    <p class="has-text-centered">
+      Overview of <span class="revseg-styled">ReVSeg</span>. The model runs a two-turn reasoning chain over the input video and query. Round one analyzes the scene and selects an informative keyframe with a concise object description. Round two grounds the target on that keyframe by predicting a bounding box. The keyframe-bbox pair conditions a video tracker to produce full segmentation sequence. A reward manager provides concise signals to post-train the VLM via  reinforcement learning, improving keyframe selection, grounding accuracy, and overall robustness.
+    </p>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" id="experiments">Experiments</h2>
+
+        <!-- Some Qualitative Cases -->
+        <h3 class="title is-4">Qualitative Cases</h3>
+        <div class="content has-text-centered">
+          <center><img src="./static/images/case_study_2samples.png" width="120%"/></center>
+          <p>
+            Qualitative cases of <span class="revseg-styled">ReVSeg</span>. The frame highlighted in red indicates the selected keyframe. The green bounding box within the enlarged keyframe on the right size represents the grounding result.
+          </p>
+        </div>
+
+        <!-- Training Curves -->
+        <h3 class="title is-4">Training Logs</h3>
+        <div class="content">
+          <div class="training-curves-grid">
+            <div class="columns is-multiline is-centered">
+              <!-- Row 1 -->
+              <div class="column is-4">
+                <div class="training-figure">
+                  <img src="./static/images/format_reward.png" alt="Format Reward" class="training-image">
+                  <p class="training-caption">(a) Format reward $r_f$ rapidly converges to a full score and remains saturated.</p>
+                </div>
+              </div>
+              <div class="column is-4">
+                <div class="training-figure">
+                  <img src="./static/images/temporal_reward.png" alt="Temporal Reward" class="training-image">
+                  <p class="training-caption">(b) Temporal reward $r_t$ increases steadily with training.</p>
+                </div>
+              </div>
+              <div class="column is-4">
+                <div class="training-figure">
+                  <img src="./static/images/spatial_reward.png" alt="Spatial Reward" class="training-image">
+                  <p class="training-caption">(c) Spatial reward $r_s$ increases steadily with training.</p>
+                </div>
+              </div>
+              
+              <!-- Row 2 -->
+              <div class="column is-4">
+                <div class="training-figure">
+                  <img src="./static/images/response_length.png" alt="Response Length" class="training-image">
+                  <p class="training-caption">(d) Response length remains stable overall without collapse.</p>
+                </div>
+              </div>
+              <div class="column is-4">
+                <div class="training-figure">
+                  <img src="./static/images/reward.png" alt="Total Reward" class="training-image">
+                  <p class="training-caption">(e) Total reward $r$ rises consistently over time.</p>
+                </div>
+              </div>
+              <div class="column is-4">
+                <div class="training-figure">
+                  <img src="./static/images/num_turns.png" alt="Number of Turns" class="training-image">
+                  <p class="training-caption">(f) Average number of rollout turns quickly converge to 2.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="has-text-centered">
+            Training curves of <span class="revseg-styled">ReVSeg</span>.
+          </p>
+        </div>
+        
+
+
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{li2024unified,
+      title={Unified Lexical Representation for Interpretable Visual-Language Alignment},
+      author={Li, Yifan and Wang, Yikai and Fu, Yanwei and Ru, Dongyu and Zhang, Zheng and He, Tong},
+      journal={Advances in Neural Information Processing Systems},
+      year={2024}
+    }</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2407.17827">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+<!--       <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a> -->
+    </div>
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Thanks for the template from <a
+            href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// 导航栏汉堡菜单功能
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取所有汉堡菜单
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // 为每个汉堡菜单添加点击事件
+  $navbarBurgers.forEach(function($el) {
+    $el.addEventListener('click', function() {
+      const target = $el.dataset.target;
+      const $target = document.getElementById(target);
+
+      // 切换菜单的激活状态
+      $el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+    });
+  });
+
+  // 平滑滚动到锚点
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // 导航栏滚动效果
+  window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 100) {
+      navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+      navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+    } else {
+      navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+      navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+    }
+  });
+});
+</script>
+
+</body>
+</html>
