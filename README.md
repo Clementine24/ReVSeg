@@ -1,5 +1,10 @@
 # ReVSeg: Incentivizing the Reasoning Chain for Video Segmentation with Reinforcement Learning
 
+> **Yifan Li**<sup>1,2</sup>, **Yingda Yin**<sup>3</sup>, **Lingting Zhu**<sup>3</sup>, **Weikai Chen**<sup>3</sup>, **Shengju Qian**<sup>3</sup>, **Xin Wang**<sup>3</sup>, **Yanwei Fu**<sup>1,2</sup>
+> <sup>1</sup>Fudan University, <sup>2</sup>Shanghai Innovation Institute, <sup>3</sup>Tencent
+
+---
+
 <div align="center">
 
 ![Teaser Image](./asset/teaser.png)
