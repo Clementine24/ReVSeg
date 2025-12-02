@@ -409,9 +409,9 @@ body {
   }
 }
 
-/* 视频演示占位符样式 */
+
 .video-demo-placeholder {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: #f8f9fa;
   border: 2px dashed #dee2e6;
   border-radius: 12px;
   padding: 4rem 2rem;
@@ -424,7 +424,7 @@ body {
 
 .video-demo-placeholder:hover {
   border-color: #adb5bd;
-  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  background: #e9ecef;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
