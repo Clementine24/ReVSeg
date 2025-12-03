@@ -9,11 +9,13 @@
 
 ![Teaser Image](./asset/teaser.png)
 
-[**Project Page**](https://clementine24.github.io/ReVSeg/) | [**arXiv Paper**](#) | [**Code**](https://github.com/Clementine24/ReVSeg)
-
-**📢 #**
+[**Project Page**](https://clementine24.github.io/ReVSeg/) | [**arXiv Paper**](https://arxiv.org/abs/2512.02835) | [**Code**](https://github.com/Clementine24/ReVSeg)
 
 </div>
+
+**📢 Latest Updates**
+- [2025/12/2] Our paper is now available on [arXiv](https://arxiv.org/abs/2512.02835).
+
 
 ## Abstract
 
@@ -44,11 +46,11 @@ We further employ reinforcement learning to optimize the multi-step reasoning ch
 If you find our work useful, please consider citing:
 
 ```bibtex
-@article{#,
-  title={ReVSeg: Incentivizing the Reasoning Chain for Video Segmentation with Reinforcement Learning},
-  author={Li, Yifan and Yin, Yingda and Zhu, Lingting and Chen, Weikai and Qian, Shengju and Wang, Xin and Fu, Yanwei},
-  journal={#},
-  year={2025}
+@article{li2025revseg,
+    title={ReVSeg: Incentivizing the Reasoning Chain for Video Segmentation with Reinforcement Learning},
+    author={Li, Yifan and Yin, Yingda and Zhu, Lingting and Chen, Weikai and Qian, Shengju and Wang, Xin and Fu, Yanwei},
+    journal={arXiv preprint arXiv:2512.02835},
+    year={2025}
 }
 ```
 
